@@ -19,7 +19,7 @@ with mss.mss() as sct:
     # Each screensot is saved with a timestamp in its name
     dt = datetime.now()
     fname = "pic_{}.png".format(dt.strftime("%H%M_%S"))
-    output = "C:\\Users\\tracy.cui\\Desktop\\Screenshot\\" + fname
+    output = "C:\\Users\\Desktop\\Screenshot\\" + fname
     # Grab the screenshot
     sct_img = sct.grab(monitor)
     # Save to the picture file
@@ -63,15 +63,16 @@ pic_top   = int(prs.slide_height * 0.2)
 pic_width = int(prs.slide_width * 0.8)
 
 
-for g in glob.glob('C:/users/tracy.cui/Desktop/Screenshot/*'):
+for g in glob.glob('C:/users/Desktop/Screenshot/*'):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     tb = slide.shapes.add_textbox(50, 50, prs.slide_width,50)  #(left, top, width, height)
     p = tb.text_frame.add_paragraph()
-    p.text = "Please Confirm the F19 Data"
+    p.text = "Slide title you would like to input for every slide"
     p.font.size = pptx.util.Pt(15)
     p.font.bold = True
     img = scipy.misc.imread(g)
     pic_height = int(pic_width * img.shape[0] / img.shape[1])
     pic = slide.shapes.add_picture(g, pic_left, pic_top, pic_width, pic_height)
     
-prs.save('Digital_DataReview_2.pptx')
+#Save as the name you want    
+prs.save('Facebook_DataReview.pptx')  

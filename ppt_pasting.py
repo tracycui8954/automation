@@ -1,3 +1,6 @@
+#install library 
+#pip install mss
+
 ##Take screenshot of part of the screen
 import mss
 import mss.tools
@@ -25,6 +28,9 @@ with mss.mss() as sct:
     # Save to the picture file
     mss.tools.to_png(sct_img.rgb, sct_img.size, output=output)
     
+#Install the library
+#pip install python-pptx
+
 ##Paste images into ppt and save as a ppt###
 import pptx
 from pptx import Presentation

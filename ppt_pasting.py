@@ -7,37 +7,40 @@ with mss.mss() as sct:
     # Get information of monitor 2
     monitor_number = 2
     mon = sct.monitors[monitor_number]
-    # The screen part to capture
+    # The part of screen to capture, depends on the size of your dashboard, try several times to get the perfect parameters
+    # Format all dashboards to have the same size for the script to work accorss differnet workbooks
     monitor = {
-        "top": mon["top"] + 115,  # 115px from the top, for normal large screen
-        "left": mon["left"] + 320,  # 260px from the left,  for normal large screen
-        "width": 1300,              #1300,  for normal large screen
-        "height": 700,              #700,  for normal large screen
+        "top": mon["top"] + 115,  # 115px from the top
+        "left": mon["left"] + 320,  # 260px from the left
+        "width": 1300,              #1300px width
+        "height": 700,              #700px height
         "mon": monitor_number,
     }
+    # Each screensot is saved with a timestamp in its name
     dt = datetime.now()
     fname = "pic_{}.png".format(dt.strftime("%H%M_%S"))
-        #sct.shot(mon=2, output= "C:\\Users\\tracy.cui\\Desktop\\Screenshot\\" + fname)
     output = "C:\\Users\\tracy.cui\\Desktop\\Screenshot\\" + fname
-    # Grab the data
+    # Grab the screenshot
     sct_img = sct.grab(monitor)
-
     # Save to the picture file
     mss.tools.to_png(sct_img.rgb, sct_img.size, output=output)
     
-    ##Paste images into powerpoint and save
+##Paste images into ppt and save as a ppt###
 import pptx
 from pptx import Presentation
 import pptx.util
 import glob
 import scipy.misc
 
-OUTPUT_TAG = "F19 BDM Data Review Digital"
+#Text to show on the tile slide
+OUTPUT_TAG = "Data Review for Facebook"
 
 # paste in a new powerpoint
 prs = pptx.Presentation()
 # paste in an existing powerpoint
-# prs_exists = pptx.Presentation("Digital_DataReview_2.pptx")
+# prs_exists = pptx.Presentation("Existing.pptx")
+
+# Set the width of slides
 
 # default slide width
 #prs.slide_width = 9144000
